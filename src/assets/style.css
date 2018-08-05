@@ -8,6 +8,37 @@ body {
   width: 100vw;
 }
 
+.page-style {
+  display: block;
+  background-color: rgba(174, 174, 174, 0.5);
+  opacity: 2;
+  margin: 50px auto 0;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.navigation-button {
+  color: #fff;
+  text-decoration: none;
+  background-color: #5ac1ff;
+  font-size: 20px;
+  font-family: Lato;
+  font-weight: bold;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  margin: 0 auto 11px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.navigation-button:hover {
+  color: #5f7a88;
+  box-shadow: none;
+}
+
 @font-face {
   font-family: "Lato";
   src: url(./fonts/Lato-Regular.ttf);

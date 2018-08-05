@@ -8,7 +8,7 @@ class Welcome extends React.Component {
   }
   render() {
     return (
-      <div className="greeting-and-game-rules-page">
+      <div className="page-style">
         <h2 className="player-greeting-heading">
           Welcome To The "Memory Game"
         </h2>
@@ -31,7 +31,7 @@ class Welcome extends React.Component {
             <p>The player who finds all pairs wins</p>
           </li>
         </ul>
-        <Link to="/registration" className="player-profile-register-button">
+        <Link to="/registration" className="navigation-button">
           Registration
         </Link>
       </div>

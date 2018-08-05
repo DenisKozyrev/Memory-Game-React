@@ -1,0 +1,97 @@
+.registration-form {
+  text-align: center;
+}
+
+.player-checkin-paragraph {
+  font-family: Gamja Flower;
+  font-size: 40px;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.player-profile {
+  margin: 50px auto;
+  width: 250px;
+}
+
+.player-profile-form {
+  text-align: center;
+}
+
+.player-profile-input-box {
+  margin-bottom: 30px;
+}
+
+.player-profile-label {
+  color: #aee0ff;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.player-profile-input {
+  outline: none;
+  border: 3px solid #ebebeb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 210px;
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #005f9a;
+  background-color: #f0f0f0;
+}
+
+.player-profile-input:focus {
+  border: 3px solid #91d5ff;
+  transition: 0.6s;
+}
+
+.shirt-cards-button {
+  text-align: center;
+  color: #fff;
+  background-color: #585858;
+  font-size: 20px;
+  font-family: Lato;
+  font-weight: bold;
+  padding: 8px 38px;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.shirt-cards-button:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.shirt-cards-button-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+}
+
+.shirt-cards-dropdown-content-display {
+  display: block;
+}
+
+.shirt-cards-button-dropdown-content li {
+  padding: 15px 20px;
+  background-color: #616161;
+  list-style-type: none;
+}
+
+.shirt-cards-img {
+  width: 130px;
+  height: 130px;
+  border: 2px solid #616161;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.shirt-cards-img:hover {
+  background-color: #f1f1f1;
+}
