@@ -14,7 +14,8 @@ class Dropdown extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     isExpanded: PropTypes.bool,
-    items: PropTypes.array
+    items: PropTypes.array,
+    onChange: PropTypes.func
   };
 
   constructor(props) {
@@ -25,17 +26,37 @@ class Dropdown extends React.Component {
     this.props.dispatch({ type: DROPDOWN_TOGGLE });
   }
 
+  getListItemClickHandler(value) {
+    return function() {
+      const { onChange } = this.props;
+      if (onChange) {
+        onChange(value);
+      }
+      this.props.dispatch({ type: DROPDOWN_TOGGLE });
+    };
+  }
+
   renderListItems() {
     const { items } = this.props;
     return items.map(item => {
       if (item.img) {
         return (
-          <li key={item.value}>
+          <li
+            key={item.value}
+            onClick={this.getListItemClickHandler(item.value).bind(this)}
+          >
             <img className="shirt-cards-img" src={item.img} />
           </li>
         );
       } else {
-        return <li key={item.value}>{item.level}</li>;
+        return (
+          <li
+            key={item.value}
+            onClick={this.getListItemClickHandler(item.value).bind(this)}
+          >
+            {item.level}
+          </li>
+        );
       }
     });
   }

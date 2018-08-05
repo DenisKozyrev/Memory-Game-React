@@ -4,14 +4,13 @@ const initialState = {
   isExpanded: false
 };
 
-export default function dropdownReducer(state = initialState, action) {
-  switch (action.type) {
+export default function dropdownReducer(state = initialState, actions) {
+  switch (actions.type) {
     case DROPDOWN_TOGGLE:
       return {
         ...state,
         isExpanded: !state.isExpanded
       };
-
     default:
       return state;
   }

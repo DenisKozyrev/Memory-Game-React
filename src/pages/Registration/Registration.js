@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./style.css";
 import Dropdown from "components/Dropdown";
+import levels from "constants/levels";
+import { getActionLevelChange } from "actions";
 
 import "components/Card/img/front/yoda-img.png";
 import "components/Card/img/front/darth-vader-img.png";
@@ -10,9 +13,9 @@ import "components/Card/img/front/r2d2-img.png";
 class Registration extends React.Component {
   getlevels() {
     return [
-      { value: 1, level: "low" },
-      { value: 2, level: "medium" },
-      { value: 3, level: "high" }
+      { value: levels.LOW, level: "low" },
+      { value: levels.MEDIUM, level: "medium" },
+      { value: levels.HIGH, level: "high" }
     ];
   }
   getShirts() {
@@ -22,12 +25,20 @@ class Registration extends React.Component {
       { value: 3, img: "assets/img/r2d2-img.png" }
     ];
   }
+  hadleLevelChange(value) {
+    console.log(this);
+    this.props.dispatch(getActionLevelChange(value));
+  }
   render() {
     return (
       <div className="registration-form page-style">
         <div className="player-checkin-and-buttons">
           <div className="level-dropdown">
-            <Dropdown title="Level" items={this.getlevels()} />
+            <Dropdown
+              title="Level"
+              items={this.getlevels()}
+              onChange={this.hadleLevelChange.bind(this)}
+            />
           </div>
           <div>
             <p className="player-checkin-paragraph">
@@ -78,4 +89,4 @@ class Registration extends React.Component {
   }
 }
 
-export default Registration;
+export default connect()(Registration);

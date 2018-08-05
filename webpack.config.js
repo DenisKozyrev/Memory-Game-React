@@ -9,7 +9,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const path = require("path");
 
 module.exports = (env, args) => {
-  console.log(path.resolve(__dirname, "src"));
   const base = {
     resolve: {
       modules: ["src", "node_modules"]
