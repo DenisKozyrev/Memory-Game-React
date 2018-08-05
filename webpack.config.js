@@ -76,6 +76,7 @@ module.exports = (env, args) => {
   const dev = {
     entry: [
       "webpack-dev-server/client?http://localhost:3000",
+      "babel-polyfill",
       "./src/index.js"
     ],
     devtool: "source-map",

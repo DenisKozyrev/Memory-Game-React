@@ -1,24 +1,21 @@
+import { Provider } from "react-redux";
 import React from "react";
-import "./style.css";
+import dropdownReducer from "./reducer";
+import Dropdown from "./Dropdown";
+import { createStore } from "redux";
 
-class Dropdown extends React.Component {
+class DropdownConteiner extends React.Component {
+  constructor(props) {
+    super(props);
+    this.store = createStore(dropdownReducer);
+  }
   render() {
     return (
-      <div className="game-button-box">
-        <button type="button" className="dropdown-button">
-          {this.props.name}
-        </button>
-        <ul
-          id="levelButtonContent"
-          className="game-level-button-dropdown-content"
-        >
-          <li>3 x 2</li>
-          <li>6 x 3</li>
-          <li>8 x 3</li>
-        </ul>
-      </div>
+      <Provider store={this.store}>
+        <Dropdown {...this.props} />
+      </Provider>
     );
   }
 }
 
-export default Dropdown;
+export default DropdownConteiner;
