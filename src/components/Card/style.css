@@ -1,0 +1,113 @@
+.card {
+  perspective: 1000px;
+  margin: 5px;
+  transition: 0.5s linear;
+}
+
+.flipper {
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card-img {
+  margin-top: 35px;
+  margin-left: 7px;
+  width: 130px;
+  height: 130px;
+}
+
+.back-card-img {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.card.flipper,
+.card.flipped .flipper,
+.card.flip .flipper {
+  transform: rotateY(180deg);
+}
+
+.card:active .flipper,
+.card.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.card,
+.front,
+.back {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  background-color: #525252;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #525252;
+}
+
+.back-card-img-1 {
+  background-image: url(./img/back/1.png);
+}
+
+.back-card-img-2 {
+  background-image: url(./img/back/2.png);
+}
+
+.back-card-img-3 {
+  background-image: url(./img/back/3.png);
+}
+
+.back-card-img-4 {
+  background-image: url(./img/back/4.png);
+}
+
+.back-card-img-5 {
+  background-image: url(./img/back/5.png);
+}
+
+.back-card-img-6 {
+  background-image: url(./img/back/6.png);
+}
+
+.back-card-img-7 {
+  background-image: url(./img/back/7.png);
+}
+
+.back-card-img-8 {
+  background-image: url(./img/back/8.png);
+}
+
+.back-card-img-9 {
+  background-image: url(./img/back/9.png);
+}
+
+.back-card-img-10 {
+  background-image: url(./img/back/10.png);
+}
+
+.back-card-img-11 {
+  background-image: url(./img/back/11.png);
+}
+
+.back-card-img-12 {
+  background-image: url(./img/back/12.png);
+}

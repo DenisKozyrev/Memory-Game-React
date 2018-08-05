@@ -1,0 +1,17 @@
+.card-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.low {
+  width: 480px;
+}
+
+.medium {
+  width: 960px;
+}
+
+.high {
+  width: 1285px;
+}
