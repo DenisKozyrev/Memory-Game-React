@@ -1,0 +1,39 @@
+.game-page {
+  display: block;
+  background-color: rgba(174, 174, 174, 0.5);
+  opacity: 2;
+  margin: 0 auto;
+  margin: 50px 0;
+  padding: 50px;
+  text-align: center;
+}
+
+.timer-and-full-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.game-fild {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.card-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.low {
+  width: 480px;
+}
+
+.medium {
+  width: 960px;
+}
+
+.high {
+  width: 1285px;
+}

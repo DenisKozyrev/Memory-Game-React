@@ -1,62 +1,53 @@
-import React from 'react';
-import './style.css';
-
-import './img/front/yoda-img.png';
-import './img/front/darth-vader-img.png';
-import './img/front/r2d2-img.png';
+import React from "react";
+import PropTypes from "prop-types";
+import { cardShirtsImg } from "constants/shirts";
+import "./style.css";
 
 class Card extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { flippedOver: false };
-    }
+  static propTypes = {
+    cardShirt: PropTypes.string,
+    flipped: PropTypes.bool,
+    cardBackImg: PropTypes.number,
+    onChange: PropTypes.func,
+    hidden: PropTypes.bool,
+    cardIndex: PropTypes.number
+  };
 
-    // componentWillMount() {}
+  getFlippedCardHandler(value, index, flipped) {
+    const { hidden } = this.props;
+    return function() {
+      const { onChange } = this.props;
+      if (hidden) {
+        return;
+      }
+      if (onChange) {
+        onChange(value, index, flipped);
+      }
+    };
+  }
 
-    render() {
-        const flipped = this.state.flippedOver ? 'card flipped' : 'card';
-        return (
-            <div className={flipped} onClick={this.flippedOver.bind(this)}>
-                <div className='flipper'>
-                    <div className='front'>
-                        <img className='card-img' src={this.props.cardShirt} />
-                    </div>
-                    <div className='back'>
-                        <img className='back-card-img' src={this.props.cardBackImg} />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    // componentDidMount() {
-    //   // this.card = document.getElementById('card');
-    //   // this.card.addEventListener('click', this.flippedOver.bind(this));
-    // }
-
-    // componentWillReceiveProps(nextProps) {
-    //   // when parent state change in child component called <=
-    // }
-
-    // componentWillUpdate(nextProps, nextState) {}
-
-    // next will call render()
-
-    // componentDidUpdate(prevProps, prevState) {}
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //   // return this.state. !== nextState && this.props !== nextProps
-    // } // if   return true react will rebuild virtual dom on this component if fasle will not
-    // // or we can extends from React PureComponent and this method will
-    // // implemented for default
-
-    // componentWillUnmount() {} //clean our component
-
-    flippedOver() {
-        this.setState(prevState => ({
-            flippedOver: !prevState.flippedOver
-        }));
-    }
+  render() {
+    const { cardShirt, cardBackImg, flipped, hidden, cardIndex } = this.props;
+    const cardCLS = flipped ? "card flipped" : "card";
+    const sameCardsCheck = hidden ? "card-disappeare" : "";
+    return (
+      <div
+        className={`${cardCLS} ${sameCardsCheck}`}
+        onClick={this.getFlippedCardHandler(
+          cardBackImg,
+          cardIndex,
+          flipped
+        ).bind(this)}
+      >
+        <div className="flipper">
+          <div className="front">
+            <img className="card-img" src={cardShirtsImg.get(cardShirt)} />
+          </div>
+          <div className={`back back-card-img-${cardBackImg}`} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Card;

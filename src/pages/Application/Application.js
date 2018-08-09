@@ -16,7 +16,7 @@ class Application extends React.Component {
       <div className="content-wrapper">
         <Router>
           <Switch>
-            <Route path="/welcome" component={Welcome} />
+            <Route exact path="/" component={Welcome} />
             <Route path="/registration" component={Registration} />
             <Route path="/game" component={Game} />
             <Route path="/score" component={Score} />

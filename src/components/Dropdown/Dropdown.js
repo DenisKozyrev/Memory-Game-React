@@ -38,11 +38,11 @@ class Dropdown extends React.Component {
 
   renderListItems() {
     const { items } = this.props;
-    return items.map(item => {
+    return items.map((item, index) => {
       if (item.img) {
         return (
           <li
-            key={item.value}
+            key={index}
             onClick={this.getListItemClickHandler(item.value).bind(this)}
           >
             <img className="shirt-cards-img" src={item.img} />
@@ -51,7 +51,7 @@ class Dropdown extends React.Component {
       } else {
         return (
           <li
-            key={item.value}
+            key={index}
             onClick={this.getListItemClickHandler(item.value).bind(this)}
           >
             {item.level}

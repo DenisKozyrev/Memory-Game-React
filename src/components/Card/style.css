@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.card-disappeare {
+  opacity: 0;
+}
+
 .card-img {
   margin-top: 35px;
   margin-left: 7px;

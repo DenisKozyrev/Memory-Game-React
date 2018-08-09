@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "./style.css";
 import Dropdown from "components/Dropdown";
-import levels from "constants/levels";
 import { getActionLevelChange } from "actions";
+import { getActionShirtChange } from "actions";
+import level from "constants/levels";
+import { cardShirts, cardShirtsImg } from "constants/shirts";
+import "./style.css";
 
 import "components/Card/img/front/yoda-img.png";
 import "components/Card/img/front/darth-vader-img.png";
@@ -13,31 +15,34 @@ import "components/Card/img/front/r2d2-img.png";
 class Registration extends React.Component {
   getlevels() {
     return [
-      { value: levels.LOW, level: "low" },
-      { value: levels.MEDIUM, level: "medium" },
-      { value: levels.HIGH, level: "high" }
+      { value: level.LOW, level: "low" },
+      { value: level.MEDIUM, level: "medium" },
+      { value: level.HIGH, level: "high" }
     ];
   }
   getShirts() {
     return [
-      { value: 1, img: "assets/img/yoda-img.png" },
-      { value: 2, img: "assets/img/darth-vader-img.png" },
-      { value: 3, img: "assets/img/r2d2-img.png" }
+      { value: cardShirts.YODA, img: cardShirtsImg.get(cardShirts.YODA) },
+      { value: cardShirts.VADER, img: cardShirtsImg.get(cardShirts.VADER) },
+      { value: cardShirts.R2D2, img: cardShirtsImg.get(cardShirts.R2D2) }
     ];
   }
-  hadleLevelChange(value) {
-    console.log(this);
+  handleLevelChange(value) {
     this.props.dispatch(getActionLevelChange(value));
   }
+  handleShirtChange(value) {
+    this.props.dispatch(getActionShirtChange(value));
+  }
+
   render() {
     return (
-      <div className="registration-form page-style">
+      <form className="registration-form page-style">
         <div className="player-checkin-and-buttons">
           <div className="level-dropdown">
             <Dropdown
               title="Level"
               items={this.getlevels()}
-              onChange={this.hadleLevelChange.bind(this)}
+              onChange={this.handleLevelChange.bind(this)}
             />
           </div>
           <div>
@@ -81,10 +86,14 @@ class Registration extends React.Component {
             </div>
           </div>
           <div className="shirt-cards-dropdown">
-            <Dropdown title="Shirt Cards" items={this.getShirts()} />
+            <Dropdown
+              title="Shirt Cards"
+              items={this.getShirts()}
+              onChange={this.handleShirtChange.bind(this)}
+            />
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 }

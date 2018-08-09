@@ -1,1 +1,1 @@
-export const DROPDOWN_TOGGLE = "DROPDOWN_HIDE";
+export const DROPDOWN_TOGGLE = "DROPDOWN_TOGGLE";

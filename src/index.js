@@ -1,12 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
 import Application from "pages/Application";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import "assets/style.css";
+import logger from "redux-logger";
 import { gameProperties } from "reducers";
 
-const store = createStore(gameProperties);
+const store = createStore(gameProperties, applyMiddleware(logger));
 
 render(
   <Provider store={store}>
