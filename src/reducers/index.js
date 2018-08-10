@@ -47,7 +47,7 @@ export function gameProperties(state = initialState, action) {
       };
     case FLIPP_CARD:
       const newCardMap = state.cardMap.slice();
-      newCardMap[action.cardIndex].flipped = !action.flipped;
+      newCardMap[action.cardIndex].flipped = !action.cardFlipped;
       return {
         ...state,
         cardMap: newCardMap
@@ -61,6 +61,7 @@ export function gameProperties(state = initialState, action) {
           flippedCards.push(index);
         }
       });
+      console.log(cardMapCopy);
 
       if (flippedCards.length >= 2) {
         if (
@@ -74,6 +75,7 @@ export function gameProperties(state = initialState, action) {
           cardMapCopy[flippedCards[1]].hidden = true;
         }
       }
+
       const gameIsInProgress =
         cardMapCopy.reduce((count, card) => {
           if (card.hidden) {
@@ -81,33 +83,38 @@ export function gameProperties(state = initialState, action) {
           }
           return count;
         }, 0) !== cardMapCopy.length;
-      let copyInterval = state.interval;
-      if (!gameIsInProgress) {
-        clearInterval(copyInterval);
-        copyInterval = null;
-      }
-      return {
-        ...state,
-        gameIsInProgress,
-        interval: copyInterval,
-        cardMap: cardMapCopy
-      };
-    case TIMER:
-      const newTime = state.time + 1;
-      return {
-        ...state,
-        time: newTime
-      };
+
+        let copyInterval = state.interval;
+        if (!gameIsInProgress) {
+          clearInterval(copyInterval);
+          copyInterval = null;
+        }
+
+        return {
+          ...state,
+          gameIsInProgress,
+          interval: copyInterval,
+          cardMap: cardMapCopy
+        };
+
+    // case TIMER:
+    //   const newTime = state.time + 1;
+    //   return {
+    //     ...state,
+    //     time: newTime
+    //   };
     case START_GAME:
       return {
         ...state,
         interval: action.interval,
-        gameIsInProgress: true
+        gameIsInProgress: true,
+        time: 0
       };
     case END_GAME:
       clearInterval(state.interval);
       return {
         ...state,
+        cardMap: [],
         interval: null,
         gameIsInProgress: false
       };

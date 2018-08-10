@@ -1,9 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Dropdown from "components/Dropdown";
-import { getActionLevelChange } from "actions";
-import { getActionShirtChange } from "actions";
+import { getActionLevelChange, getActionShirtChange, START_GAME } from "actions";
 import level from "constants/levels";
 import { cardShirts, cardShirtsImg } from "constants/shirts";
 import "./style.css";
@@ -12,7 +12,17 @@ import "components/Card/img/front/yoda-img.png";
 import "components/Card/img/front/darth-vader-img.png";
 import "components/Card/img/front/r2d2-img.png";
 
+function mapStateToProps(state) {
+  return {
+    gameIsInProgress: state.gameIsInProgress
+  };
+}
+
 class Registration extends React.Component {
+  static propTypes = {
+    gameIsInProgress: PropTypes.bool
+  };
+  
   getlevels() {
     return [
       { value: level.LOW, level: "low" },
@@ -32,6 +42,10 @@ class Registration extends React.Component {
   }
   handleShirtChange(value) {
     this.props.dispatch(getActionShirtChange(value));
+  }
+
+  handleStartGameClick() {
+    this.props.dispatch({ type: START_GAME });
   }
 
   render() {
@@ -79,7 +93,7 @@ class Registration extends React.Component {
                     pattern="^[.a-z0-9_-]+@[а-яА-Яa-z0-9-]+\.[а-яА-Яa-zA-Z]{2,6}$"
                   />
                 </div>
-                <Link to="/game" className="navigation-button">
+                <Link to="/game" className="navigation-button" onClick={this.handleStartGameClick.bind(this)}>
                   New Game
                 </Link>
               </div>
@@ -98,4 +112,4 @@ class Registration extends React.Component {
   }
 }
 
-export default connect()(Registration);
+export default connect(mapStateToProps)(Registration);

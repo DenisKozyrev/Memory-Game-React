@@ -21,8 +21,11 @@ class GameCards extends React.Component {
     cardMap: PropTypes.array
   };
 
-  checkFlippedCard(value, index, cardFlipped) {
-    this.props.dispatch(getFlippCardAction(value, index, cardFlipped));
+  checkFlippedCard(value, index, flipped) {
+    this.props.dispatch(getFlippCardAction(value, index, flipped));
+  }
+
+  handleFlipEnd() {
     this.props.dispatch(getCheckStateAction());
   }
 
@@ -42,6 +45,7 @@ class GameCards extends React.Component {
                   cardShirt={cardShirt}
                   hidden={card.hidden}
                   flipped={card.flipped}
+                  onFlipEnd={this.handleFlipEnd.bind(this)}
                 />
               );
             })}
