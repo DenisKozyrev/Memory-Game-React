@@ -5,7 +5,8 @@ import {
   CHECK_STATE,
   TIMER,
   END_GAME,
-  START_GAME
+  START_GAME,
+  SHOW_SCORE
 } from "../actions";
 
 import _ from "lodash";
@@ -16,7 +17,8 @@ const initialState = {
   cardMap: [],
   time: 0,
   gameIsInProgress: true,
-  interval: null
+  interval: null,
+  score: []
 };
 
 export function gameProperties(state = initialState, action) {
@@ -61,7 +63,6 @@ export function gameProperties(state = initialState, action) {
           flippedCards.push(index);
         }
       });
-      console.log(cardMapCopy);
 
       if (flippedCards.length >= 2) {
         if (
@@ -97,12 +98,12 @@ export function gameProperties(state = initialState, action) {
           cardMap: cardMapCopy
         };
 
-    // case TIMER:
-    //   const newTime = state.time + 1;
-    //   return {
-    //     ...state,
-    //     time: newTime
-    //   };
+    case TIMER:
+      const newTime = state.time + 1;
+      return {
+        ...state,
+        time: newTime
+      };
     case START_GAME:
       return {
         ...state,
@@ -118,6 +119,11 @@ export function gameProperties(state = initialState, action) {
         interval: null,
         gameIsInProgress: false
       };
+    case SHOW_SCORE:
+      return {
+        ...state,
+        score: action.score
+      }
     default:
       return state;
   }

@@ -32,9 +32,9 @@ class Registration extends React.Component {
   }
   getShirts() {
     return [
-      { value: cardShirts.YODA, img: cardShirtsImg.get(cardShirts.YODA) },
-      { value: cardShirts.VADER, img: cardShirtsImg.get(cardShirts.VADER) },
-      { value: cardShirts.R2D2, img: cardShirtsImg.get(cardShirts.R2D2) }
+      { value: cardShirts.YODA, img: cardShirtsImg.get(cardShirts.YODA).image },
+      { value: cardShirts.VADER, img: cardShirtsImg.get(cardShirts.VADER).image },
+      { value: cardShirts.R2D2, img: cardShirtsImg.get(cardShirts.R2D2).image }
     ];
   }
   handleLevelChange(value) {

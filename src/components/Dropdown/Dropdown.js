@@ -39,6 +39,7 @@ class Dropdown extends React.Component {
   renderListItems() {
     const { items } = this.props;
     return items.map((item, index) => {
+      console.log(item);
       if (item.img) {
         return (
           <li

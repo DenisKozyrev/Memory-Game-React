@@ -17,10 +17,9 @@ class GameField extends React.Component {
   };
 
   componentDidMount() {
-    // const interval = setInterval(() => {
-    //   this.props.dispatch({ type: TIMER });
-    // }, 1000);
-    const interval = null;
+    const interval = setInterval(() => {
+      this.props.dispatch({ type: TIMER });
+    }, 1000);
     this.props.dispatch({ type: START_GAME, interval });
   }
 

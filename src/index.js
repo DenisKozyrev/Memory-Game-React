@@ -6,8 +6,9 @@ import { Provider } from "react-redux";
 import "assets/style.css";
 import logger from "redux-logger";
 import { gameProperties } from "reducers";
+import thunk from 'redux-thunk';
 
-const store = createStore(gameProperties, applyMiddleware(logger));
+const store = createStore(gameProperties, applyMiddleware(logger, thunk));
 
 render(
   <Provider store={store}>

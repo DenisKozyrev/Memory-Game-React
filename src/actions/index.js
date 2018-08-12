@@ -8,6 +8,8 @@ export const STOPTIMER = "STOPTIMER";
 export const START_GAME = "START_GAME";
 export const END_GAME = "END_GAME";
 
+export const SHOW_SCORE = "SHOW_SCORE";
+
 export function getActionLevelChange(level) {
   return {
     type: GAME_PROPERTIES_LEVEL_CHANGE,
@@ -35,4 +37,23 @@ export function getCheckStateAction() {
   return {
     type: CHECK_STATE
   };
+}
+
+function getScoreAPI() {
+  return fetch('http://mmg-score.herokuapp.com/', {
+      method: 'GET'
+    }).then(response => {
+      return response.json();
+    });
+}
+
+export function getScore() {
+  return (dispatch) => {
+    return getScoreAPI().then(response => {
+      dispatch({
+        type: SHOW_SCORE,
+        score: response.result
+      });
+    });
+  }
 }

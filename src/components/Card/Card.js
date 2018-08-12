@@ -61,7 +61,7 @@ class Card extends React.Component {
         ).bind(this)}
         onAnimationEnd={this.handleAnimationEnd.bind(this)}
       >
-          <div className={`front ${cardShirtsImg.get(cardShirt)}`} />
+          <div className={`front ${cardShirtsImg.get(cardShirt).className}`} />
           <div className={`back back-card-img-${cardBackImg}`} />
       </div>
     );
