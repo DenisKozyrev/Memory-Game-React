@@ -10,26 +10,47 @@ class Card extends React.Component {
     cardBackImg: PropTypes.number,
     onChange: PropTypes.func,
     hidden: PropTypes.bool,
-    cardIndex: PropTypes.number
+    cardIndex: PropTypes.number,
+    onFlipEnd: PropTypes.func
   };
+
+  constructor(props) {
+    super(props);
+
+    this.isInitialNotFlipped = true;
+  }
 
   getFlippedCardHandler(value, index, flipped) {
     const { hidden } = this.props;
+
     return function() {
-      const { onChange } = this.props;
+      this.isInitialNotFlipped = false;
+
       if (hidden) {
         return;
       }
+
+      const { onChange } = this.props;
+
       if (onChange) {
         onChange(value, index, flipped);
       }
     };
   }
 
+  handleAnimationEnd(event) {
+    const { onFlipEnd } = this.props;
+
+    if (onFlipEnd) {
+      onFlipEnd();
+    }
+  }
+
   render() {
     const { cardShirt, cardBackImg, flipped, hidden, cardIndex } = this.props;
-    const cardCLS = flipped ? "card flipped" : "card";
-    const sameCardsCheck = hidden ? "card-disappeare" : "";
+    const notFlippedCls = this.isInitialNotFlipped ? "" : "not-flipped";
+    const cardCLS = flipped ? "card flipped" : `card ${notFlippedCls}`;
+    const sameCardsCheck = hidden ? "hidden" : "";
     return (
       <div
         className={`${cardCLS} ${sameCardsCheck}`}
@@ -38,13 +59,10 @@ class Card extends React.Component {
           cardIndex,
           flipped
         ).bind(this)}
+        onAnimationEnd={this.handleAnimationEnd.bind(this)}
       >
-        <div className="flipper">
-          <div className="front">
-            <img className="card-img" src={cardShirtsImg.get(cardShirt)} />
-          </div>
-          <div className={`back back-card-img-${cardBackImg}`} />
-        </div>
+        <div className={`front ${cardShirtsImg.get(cardShirt).className}`} />
+        <div className={`back back-card-img-${cardBackImg}`} />
       </div>
     );
   }

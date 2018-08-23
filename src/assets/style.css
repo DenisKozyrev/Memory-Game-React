@@ -18,8 +18,8 @@ body {
 }
 
 .navigation-button {
-  color: #fff;
   text-decoration: none;
+  color: #fff;
   background-color: #5ac1ff;
   font-size: 20px;
   font-family: Lato;
@@ -30,11 +30,11 @@ body {
   cursor: pointer;
   outline: none;
   display: inline-block;
-  margin: 0 auto 11px;
+  margin: 20px auto 11px;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.navigation-button:hover {
+.navigation-button:active {
   color: #5f7a88;
   box-shadow: none;
 }

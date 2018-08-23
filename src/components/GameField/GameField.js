@@ -7,13 +7,17 @@ import GameCards from "components/GameCards";
 
 function mapStateToProps(state) {
   return {
-    time: state.time
+    time: state.time,
+    userFirstName: state.userFirstName,
+    userLastName: state.userLastName
   };
 }
 
 class GameField extends React.Component {
   static propTypes = {
-    time: PropTypes.number
+    time: PropTypes.number,
+    userFirstName: PropTypes.string,
+    userLastName: PropTypes.string
   };
 
   componentDidMount() {
@@ -24,11 +28,12 @@ class GameField extends React.Component {
   }
 
   render() {
-    const { time } = this.props;
+    const { time, userFirstName, userLastName } = this.props;
     return (
       <div>
         <div className="timer-and-full-name">
           <Timer time={time} />
+          <p className="player-full-name">{`${userFirstName} ${userLastName}`}</p>
         </div>
         <GameCards />
       </div>

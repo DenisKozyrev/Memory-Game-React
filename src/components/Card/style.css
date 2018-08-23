@@ -1,20 +1,61 @@
+@-webkit-keyframes flipped { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); }  }
+@-moz-keyframes flipped { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); }  }
+@-o-keyframes flipped { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); }  }
+@keyframes flipped { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); }  }
+
+@-webkit-keyframes not-flipped { from { transform: rotateY(180deg); } to { transform: rotateY(0deg); }  }
+@-moz-keyframes not-flipped { from { transform: rotateY(180deg); } to { transform: rotateY(0deg); }  }
+@-o-keyframes not-flipped { from { transform: rotateY(180deg); } to { transform: rotateY(0deg); }  }
+@keyframes not-flipped { from { transform: rotateY(180deg); } to { transform: rotateY(0deg); }  }
+
 .card {
   perspective: 1000px;
-  margin: 5px;
-  transition: 0.5s linear;
-}
-
-.flipper {
-  transition: 0.5s;
-  transform-style: preserve-3d;
   position: relative;
+  margin: 5px;
+  cursor: pointer;
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
 }
 
-.card-disappeare {
+.flipped .front {
+  -webkit-animation: flipped 0.5s linear 0s 1 normal forwards;
+  -moz-animation: flipped 0.5s linear 0s 1 normal forwards;
+  -o-animation: flipped 0.5s linear 0s 1 normal forwards;
+  animation: flipped 0.5s linear 0s 1 normal forwards;
+}
+
+.flipped .back {
+  -webkit-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  -moz-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  -o-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  animation: not-flipped 0.5s linear 0s 1 normal forwards;
+}
+
+.not-flipped .front {
+  -webkit-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  -moz-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  -o-animation: not-flipped 0.5s linear 0s 1 normal forwards;
+  animation: not-flipped 0.5s linear 0s 1 normal forwards;
+}
+
+.not-flipped .back {
+  -webkit-animation: flipped 0.5s linear 0s 1 normal forwards;
+  -moz-animation: flipped 0.5s linear 0s 1 normal forwards;
+  -o-animation: flipped 0.5s linear 0s 1 normal forwards;
+  animation: flipped 0.5s linear 0s 1 normal forwards;
+}
+
+.flipped .back {
+  opacity: 1;
+}
+
+.hidden {
   opacity: 0;
+  cursor: default;
 }
 
-.card-img {
+.image {
   margin-top: 35px;
   margin-left: 7px;
   width: 130px;
@@ -22,50 +63,48 @@
 }
 
 .back-card-img {
-  width: 150px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-}
-
-.card.flipper,
-.card.flipped .flipper,
-.card.flip .flipper {
-  transform: rotateY(180deg);
-}
-
-.card:active .flipper,
-.card.hover .flipper {
-  transform: rotateY(180deg);
-}
-
-.card,
-.front,
-.back {
-  width: 150px;
-  height: 200px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.front,
-.back {
-  backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
 }
 
 .front {
+  backface-visibility: hidden;
   z-index: 2;
-  transform: rotateY(0deg);
   background-color: #525252;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotateY(0deg);
+}
+
+.front.yoda {
+  background-image: url(./img/front/yoda-img.png);
+}
+
+.front.r2d2 {
+  background-image: url(./img/front/r2d2-img.png);
+}
+
+.front.vader {
+  background-image: url(./img/front/darth-vader-img.png);
 }
 
 .back {
-  transform: rotateY(180deg);
+  position: absolute;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #525252;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 
 .back-card-img-1 {

@@ -1,0 +1,43 @@
+.score-page {
+  background-color: rgba(174, 174, 174, 0.5);
+  opacity: 2;
+  margin: 50px auto 0;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.game-score-and-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 1100px;
+}
+
+.game-score-table {
+  border-collapse: collapse;
+}
+
+.game-score-table th {
+  color: #fff;
+  font-family: Gamja Flower;
+  font-size: 35px;
+  padding: 10px;
+}
+
+.game-score-table td {
+  color: #fff;
+  font-family: Lato;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.game-score-table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 0 auto;
+  width: 650px;
+}

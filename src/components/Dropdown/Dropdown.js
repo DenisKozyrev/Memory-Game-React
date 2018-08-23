@@ -15,7 +15,8 @@ class Dropdown extends React.Component {
     title: PropTypes.string,
     isExpanded: PropTypes.bool,
     items: PropTypes.array,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    belongTo: PropTypes.string
   };
 
   constructor(props) {
@@ -62,10 +63,10 @@ class Dropdown extends React.Component {
   }
 
   renderList() {
-    const { isExpanded } = this.props;
+    const { isExpanded, belongTo } = this.props;
     const listItems = this.renderListItems();
     return isExpanded ? (
-      <ul className="game-level-button-dropdown-content">{listItems}</ul>
+      <ul className={`game-${belongTo}-dropdown-content`}>{listItems}</ul>
     ) : null;
   }
 

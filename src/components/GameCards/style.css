@@ -3,7 +3,6 @@
   background-color: rgba(174, 174, 174, 0.5);
   opacity: 2;
   margin: 0 auto;
-  margin: 50px 0;
   padding: 50px;
   text-align: center;
 }
@@ -12,6 +11,13 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+}
+
+.player-full-name {
+  font-family: Gamja Flower;
+  color: #6aabfe;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 .game-fild {
@@ -35,5 +41,5 @@
 }
 
 .high {
-  width: 1285px;
+  width: 1550px;
 }
