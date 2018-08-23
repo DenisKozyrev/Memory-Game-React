@@ -155,6 +155,11 @@ export function gameProperties(state = initialState, action) {
         ...state,
         score: action.score
       };
+    case SHOW_SCORE:
+      return {
+        ...state,
+        score: action.score
+      };
     default:
       return state;
   }

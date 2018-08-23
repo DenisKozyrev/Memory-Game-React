@@ -46,6 +46,14 @@ class Card extends React.Component {
     }
   }
 
+  handleAnimationEnd(event) {
+    const { onFlipEnd } = this.props;
+
+    if (onFlipEnd) {
+      onFlipEnd();
+    }
+  }
+
   render() {
     const { cardShirt, cardBackImg, flipped, hidden, cardIndex } = this.props;
     const notFlippedCls = this.isInitialNotFlipped ? "" : "not-flipped";
