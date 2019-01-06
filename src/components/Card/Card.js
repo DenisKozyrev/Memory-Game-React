@@ -20,6 +20,7 @@ class Card extends React.Component {
     this.isInitialNotFlipped = true;
   }
 
+ 
   getFlippedCardHandler(value, index, flipped) {
     const { hidden } = this.props;
 
